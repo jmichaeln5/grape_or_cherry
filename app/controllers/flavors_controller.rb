@@ -28,8 +28,8 @@ class FlavorsController < ApplicationController
 
     respond_to do |format|
       if @flavor.save
-        format.html { redirect_to @flavor, notice: 'Flavor was successfully created.' }
-        format.json { render :show, status: :created, location: @flavor }
+        format.html { redirect_to flavors_path, notice: 'Vote was successfully created.' }
+        format.json { render :show, status: :created, location: flavors_path }
       else
         format.html { render :new }
         format.json { render json: @flavor.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class FlavorsController < ApplicationController
   def update
     respond_to do |format|
       if @flavor.update(flavor_params)
-        format.html { redirect_to @flavor, notice: 'Flavor was successfully updated.' }
-        format.json { render :show, status: :ok, location: @flavor }
+        format.html { redirect_to flavors_path, notice: 'Vote was successfully updated.' }
+        format.json { render :show, status: :ok, location: flavors_path }
       else
         format.html { render :edit }
         format.json { render json: @flavor.errors, status: :unprocessable_entity }
