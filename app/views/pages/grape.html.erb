@@ -1,5 +1,31 @@
 <div class="container py-5">
 
-<h1>Grape</h1>
+  <h1>Vote Grape</h1>
 
+
+  <%= form_with(model: @flavor, local: true) do |form| %>
+    <% if @flavor.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@flavor.errors.count, "error") %> prohibited this @flavor from being saved:</h2>
+
+        <ul>
+        <% @flavor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <div class="field">
+      <%= radio_button_tag(:grape, "Grape") %>
+      <%= form.text_field :grape, id: :flavor_grape,  method: :post, value:"I Vote Grape" %>
+    </div>
+
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
 </div>

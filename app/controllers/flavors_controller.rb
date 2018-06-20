@@ -1,5 +1,7 @@
 class FlavorsController < ApplicationController
   before_action :set_flavor, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!,  only: [:new, :show, :edit, :update, :destroy]
+
 
   # GET /flavors
   # GET /flavors.json
