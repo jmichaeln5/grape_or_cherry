@@ -1,20 +1,30 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container text-center">
 
-    <h1 class="display-4 ">Flavors</h1>
 
     <!-- <br>
     <%= link_to 'New Flavor', new_flavor_path, class:"btn btn-success btn-block btn-lg" %>
     <br> -->
 
+
+    <div class="card text-center">
     <br>
-    <%= link_to 'Vote Cherry', pages_cherry_path, class:"btn btn-success btn-block btn-lg" %>
-    <%= link_to 'Vote Grape', pages_grape_path, class:"btn btn-success btn-block btn-lg" %>
+    <div class="card-body">
+      <h1 class="text-center">Votes</h1>
+
+    <br>
+    <%= link_to 'Vote Cherry', pages_cherry_path, class:"btn btn-success btn-lg my-2" %>
+    <%= link_to 'Vote Grape', pages_grape_path, class:"btn btn-success btn-lg my-2" %>
+    <br>
     <br>
 
-
+</div>
 
     <br>
+
+<br>
+
+<h4> <strong> <%= @flavors.count%> </strong> Votes. </h4>
 
 
     <% @flavors.each do |flavor| %>
@@ -23,27 +33,28 @@
       <div class="card-body">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">
-                        <div class="card-body">
-
-                            <ul>
-                                <li><%= flavor.cherry %></li>
-                                <li><%= flavor.grape %></li>
-                            </ul>
-
-                     </div>
-                 </div>
+              <br>
+              <%= flavor.user.email %> voted <%= flavor.grape %> <%= flavor.cherry %>
             </div>
       </div>
 
       <br>
-          <%= link_to 'Show ', flavor %> <%= link_to 'Edit ', edit_flavor_path(flavor) %> <%= link_to 'Destroy ', flavor, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <%# if current_user.id = flavor.user.id %>
+
+
+ <% if current_user &&flavor.user.id == current_user.id %>
+          <%= link_to 'Delete', flavor, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
       <br>
+<% end %>
 
     </div>
   </div>
   <br>
   <% end %>
+
+</div>
+
 
 
 <br>
